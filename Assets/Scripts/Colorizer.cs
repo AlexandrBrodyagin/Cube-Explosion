@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class Colorizer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Renderer renderer = GetComponent<Renderer>();
+        Color randomColor = new Color(Random.value, Random.value, Random.value);
+        renderer.material.color = randomColor;
     }
 }

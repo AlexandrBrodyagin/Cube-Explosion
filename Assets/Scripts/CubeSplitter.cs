@@ -2,15 +2,33 @@ using UnityEngine;
 
 public class CubeSplitter : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private CubeSpawner spawner;
+    private float _splitChance = 1f;
+
+    public float SplitChance
     {
-        
+        get
+        {
+            return _splitChance;
+        }
+        set
+        {
+            _splitChance = value;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        spawner = GetComponent<CubeSpawner>();
+    }
+
+    public void Split()
+    {
+        if (Random.value < SplitChance)
+        {
+            spawner.Spawn(transform.localScale);
+        }
+
+        Destroy(gameObject);
     }
 }
